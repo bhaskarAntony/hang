@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Screenshot Example</title>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+</head>
+<body>
+    <div id="capture">
+       <img src="./images.jpeg" alt="">
+       hello
+    </div>
+    <button onclick="captureScreenshot()">Capture Screenshot</button>
+
+    <script >
+        function captureScreenshot() {
+    // Select the element to be captured
+    const element = document.getElementById('capture');
+
+    // Use html2canvas to capture the content of the element
+    html2canvas(element).then(canvas => {
+        // Convert the canvas to a data URL
+        const dataURL = canvas.toDataURL();
+
+        // Create a link element to download the image
+       
+        for(let i = 0; i<=100; i++){
+            const link = document.createElement('a');
+        link.href = dataURL;
+        link.download = `screenshot${i}.png`;
+        // const a = new Audio();
+        // a.src = "brain.mp3"
+        // a.play();
+        // a.loop();
+
+        // Trigger a click on the link to initiate the download
+        link.click();
+}
+    });
+}
+
+captureScreenshot()
+
+    </script>
+</body>
+</html>
